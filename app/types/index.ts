@@ -21,5 +21,9 @@ export type SpendingCardProps ={
 }
 
 
-
-
+export type Payment = {
+    name:string;
+    email:string;
+    lasOrder:string;
+    method:string;
+}
