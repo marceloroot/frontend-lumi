@@ -19,7 +19,7 @@ const SpendingCard = (props:SpendingCardProps) => {
                     </div>
                 </div>
             </div>
-            <p>${props.spendingAmount}</p>
+            <p>{props.spendingAmount}</p>
         </section>
      );
 }

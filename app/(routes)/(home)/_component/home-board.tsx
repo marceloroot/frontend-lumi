@@ -7,6 +7,8 @@ import SpendingCard from "@/app/_components/spending-card";
 import CardContentStyle from "@/app/_components/cad-content";
 import { GET } from "@/app/api/dashboard/routes";
 import { useQuery } from "@tanstack/react-query";
+import { ResponsiveContainer } from "recharts";
+import StackedAreaChart from "@/app/_components/stacked-area-chart";
 
 
 const HomeBoard = () => {
@@ -77,9 +79,8 @@ const HomeBoard = () => {
     ]
     return (  
       <>
-      {/* {JSON.stringify(data,null,2)} */}
+        {/* <pre>{JSON.stringify(data,null,2)}</pre> */}
         <section className="grid w-full grid-cols-1 gap-4 gap-x-8 transition-all sm:grid-cols-2 xl:grid-cols-4">
-        
           <CardBoard 
           amount={`${data.electricPowerConsumption} kwh`}
           icon={LucideAirplay}
@@ -113,19 +114,44 @@ const HomeBoard = () => {
       
       <section className="grid grid-cols-1 gap-4 transition-all lg:grid-cols-2">
         <CardContentStyle className="justfy-between">
-          <p className="p-4 font-semibold">Overview</p>
-          <BarChart inovices={data}/>
+          <p className="p-4 font-semibold">Overview KWH</p>
+          <BarChart energias={data.invoicesEnergia}/>
         </CardContentStyle>
 
         <CardContentStyle className="flex justfy-between gap-4">
-          <p className="p-4 font-semibold">Spending Recents</p>
-          {dataSpeending.map(speeding =>(
+          <p className="p-4 font-semibold">Spending  Recents KWH</p>
+          {data.invoiceUsers.map(user =>(
              <SpendingCard 
-                key={speeding.numberClient}
-                name={speeding.name}
-                numberClient={speeding.numberClient}
-                numberInstalation={speeding.numberInstalation}
-                spendingAmount={speeding.spendingAmount} 
+                key={user.clientNumber}
+                name={user.clientNumber}
+                numberClient={user.clientNumber}
+                numberInstalation={user.instaltionNumber}
+                spendingAmount={`${user.energyRecent} kwh`} 
+             />
+          ))}
+         
+
+        </CardContentStyle>
+
+
+      </section>
+
+
+      <section className="grid grid-cols-1 gap-4 transition-all lg:grid-cols-2">
+        <CardContentStyle className="justfy-between">
+          <p className="p-4 font-semibold">Overview Price </p>
+          <StackedAreaChart monetaryValues={data.monetaryValues}/>
+        </CardContentStyle>
+
+        <CardContentStyle className="flex justfy-between gap-4">
+          <p className="p-4 font-semibold">Recent Expenses</p>
+          {data.invoiceUsers.map(user =>(
+             <SpendingCard 
+                key={user.clientNumber}
+                name={user.clientNumber}
+                numberClient={user.clientNumber}
+                numberInstalation={user.instaltionNumber}
+                spendingAmount={`R$ ${user.priceRecent}`} 
              />
           ))}
          

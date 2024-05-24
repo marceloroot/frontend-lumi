@@ -42,6 +42,21 @@ export interface EnergyDetails  {
     kwhenergejetada:number
     kwhenergiaICMS:number;
    };
+
+   export interface InvoiceUsers {
+    clientNumber:string;
+    instaltionNumber:string;
+    energyRecent:string;
+    priceRecent:string;
+   };
+   export interface MonetaryValues  {
+    name:string;
+    gdiPrice:number;
+    eenergyPrice:number;
+    energyEjetadaPrice:number
+    energyICMSPrice:number;
+    
+   };
  
 export interface DashBoardDTO {
     electricPowerConsumption: number;
@@ -49,4 +64,6 @@ export interface DashBoardDTO {
     totalValueWithoutGD: number;
     economiaGD: number;
     invoicesEnergia:InvoiceEnergia[];
+    invoiceUsers:InvoiceUsers[];
+    monetaryValues:MonetaryValues[];
 }
