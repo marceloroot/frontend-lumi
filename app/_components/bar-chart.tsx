@@ -1,6 +1,10 @@
 "use client"
-import {ResponsiveContainer,BarChart as BarGraph, XAxis, YAxis, Bar, CartesianGrid, Tooltip, Legend, Rectangle} from 'recharts'
-const BarChart = () => {
+import {ResponsiveContainer, XAxis, YAxis, Bar, CartesianGrid, Tooltip, Legend, Line, LineChart} from 'recharts'
+import { DashBoardDTO } from '../_interface/inovice-dashboard-interface';
+interface BarChartsProps{
+  inovices:DashBoardDTO
+}
+const BarChart = ({inovices}:BarChartsProps) => {
     const dataExemple = [
         {
           name: 'Page A',
@@ -47,16 +51,29 @@ const BarChart = () => {
       ];
       
     return ( 
-        <ResponsiveContainer width={"100%"} height={350}>
-          <BarGraph data={dataExemple}>
+      <ResponsiveContainer width={"100%"} height={350}>
+       <LineChart
+            width={500}
+            height={300}
+            data={inovices.invoicesEnergia}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
           <CartesianGrid strokeDasharray="3 3" />
-             <XAxis dataKey="name" />
-             <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
-          </BarGraph>
+          <XAxis dataKey="name" />
+          <YAxis  />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="kwhenergejetada" name="Injetada" stroke="#ff00ff" />
+          <Line type="monotone" dataKey="kwhenergiaICMS" name='ICMS' stroke="#8884d8" />
+          <Line type="monotone" dataKey="kwhenergia" name="Energia" stroke="#fd0000" />
+          <Line type="monotone" dataKey="kwhgdi" name="GDI" stroke="#000000  " />
+   
+          </LineChart>
         </ResponsiveContainer>
 
      );

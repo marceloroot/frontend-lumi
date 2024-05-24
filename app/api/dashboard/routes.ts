@@ -1,7 +1,8 @@
 
+import { DashBoardDTO } from "@/app/_interface/inovice-dashboard-interface";
 import { baseUrl } from "@/config/base";
 
-const GET = async () => {
+const GET = async ():Promise<DashBoardDTO> => {
 
   const url = `${baseUrl}/api/invoice`;
   const response = await fetch(url, {
@@ -14,7 +15,7 @@ const GET = async () => {
   if (!response.ok) {
     throw new Error("Conexão com a rede está com problema");
   }
-  const invoices = await response.json();
+  const invoices:DashBoardDTO = await response.json();
 
   return invoices;
 };

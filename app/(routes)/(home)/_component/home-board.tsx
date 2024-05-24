@@ -1,5 +1,5 @@
 "use client"
-import { LucideAArrowUp, LucideCuboid } from "lucide-react";
+import { LucideAArrowUp, LucideAirplay, LucideCuboid, LucideNetwork } from "lucide-react";
 import CardBoard from "../../../_components/card-board";
 
 import BarChart from "@/app/_components/bar-chart";
@@ -15,7 +15,6 @@ const HomeBoard = () => {
   const {data,isPending,isError,error} = useQuery({
     queryKey:['invoicesboard'],
     queryFn:() => GET(),
-    
   })
 
 
@@ -78,16 +77,36 @@ const HomeBoard = () => {
     ]
     return (  
       <>
+      {/* {JSON.stringify(data,null,2)} */}
         <section className="grid w-full grid-cols-1 gap-4 gap-x-8 transition-all sm:grid-cols-2 xl:grid-cols-4">
-        {cardProps.map(item => (
+        
           <CardBoard 
-          key={item.id}
-          amount={item.amount}
-          icon={item.icon}
-          description={item.description}
-          label={item.label}
+          amount={`${data.electricPowerConsumption} kwh`}
+          icon={LucideAirplay}
+          description="Consumo de Energia Elétrica"
+          label="Consumo de energia eletrica"
           />
-        ))}
+
+         <CardBoard 
+          amount={`${data.compensatedEnergy} kwh`}
+          icon={LucideAirplay}
+          description="Energia Compensada"
+          label="Energia Compensada"
+          />
+
+         <CardBoard 
+          amount={`R$ ${data.totalValueWithoutGD} `}
+          icon={LucideAirplay}
+          description="Valor Total sem GD"
+          label="Valor Total sem GD"
+          />
+         <CardBoard 
+          amount={`R$ ${data.economiaGD} `}
+          icon={LucideAirplay}
+          description="Economia GD"
+          label="Economia GD"
+          />
+      
         
       </section>
       
@@ -95,7 +114,7 @@ const HomeBoard = () => {
       <section className="grid grid-cols-1 gap-4 transition-all lg:grid-cols-2">
         <CardContentStyle className="justfy-between">
           <p className="p-4 font-semibold">Overview</p>
-          <BarChart/>
+          <BarChart inovices={data}/>
         </CardContentStyle>
 
         <CardContentStyle className="flex justfy-between gap-4">
