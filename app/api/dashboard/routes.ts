@@ -1,23 +1,22 @@
 
 import { baseUrl } from "@/config/base";
 
-const POST = async (data: string) => {
-  console.log(data);
-  const url = `${baseUrl}/beneficio`;
+const GET = async () => {
+
+  const url = `${baseUrl}/api/invoice`;
   const response = await fetch(url, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(data),
   });
 
   if (!response.ok) {
     throw new Error("Conexão com a rede está com problema");
   }
-  const beneficio = await response.json();
+  const invoices = await response.json();
 
-  return beneficio;
+  return invoices;
 };
 
-export { POST };
+export { GET };
