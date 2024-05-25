@@ -7,7 +7,7 @@ import QueryProvider from "./_provider/query-provider";
 import Nav from "./_components/nav";
 import { cn } from "./_lib/utils";
 import Main from "./_components/main";
-
+import { UserContextProvider } from "./contexts/user-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,14 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(
-        "flex min-h-screen w-full bg-white text-black"
-      )}>
+      <body className={cn("flex min-h-screen w-full bg-white text-black")}>
         <QueryProvider>
-          <Nav />
-          <Main> {children}</Main>
-         
-          <Toaster />
+          <UserContextProvider>
+            <Nav />
+            <Main> {children}</Main>
+
+            <Toaster />
+          </UserContextProvider>
         </QueryProvider>
       </body>
     </html>
