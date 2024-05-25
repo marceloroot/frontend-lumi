@@ -6,8 +6,9 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col gap-5">
       <PageTitle title="DashBoard" />
-
-      <HomeBoard />
+      <UserContextProvider>
+        <HomeBoard />
+      </UserContextProvider>
     </div>
   );
 }
