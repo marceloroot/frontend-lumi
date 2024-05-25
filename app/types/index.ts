@@ -22,8 +22,10 @@ export type SpendingCardProps ={
 
 
 export type Payment = {
+    props:{
     name:string;
     email:string;
     lasOrder:string;
     method:string;
+}
 }

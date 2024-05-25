@@ -36,10 +36,10 @@ const StackedAreaChart  = ({ monetaryValues }: BarChartsProps) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Area type="monotone" dataKey="energyEjetadaPrice" name="Injetada" stackId="1" stroke="#ff00ff" fill="#ff00ff" />
-          <Area type="monotone" dataKey="energyICMSPrice" name="ICMS" stackId="1" stroke="#8884d8" fill="#8884d8" />
-          <Area type="monotone" dataKey="eenergyPrice" name="Energia" stackId="1" stroke="#ffc658" fill="#fd0000" />
-          <Area type="monotone" dataKey="gdiPrice" name="GDI" stackId="1" stroke="#000000" fill="#000000" />
+          <Area type="monotone" dataKey="energyEjetadaPrice" name="R$ Injetada" stackId="1" stroke="#ff00ff" fill="#ff00ff" />
+          <Area type="monotone" dataKey="energyICMSPrice" name="R$ ICMS" stackId="1" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="eenergyPrice" name="R$ Energia" stackId="1" stroke="#fd0000" fill="#fd0000" />
+          <Area type="monotone" dataKey="gdiPrice" name="R$ GDI" stackId="1" stroke="#000000" fill="#000000" />
 
         </AreaChart>
     </ResponsiveContainer>

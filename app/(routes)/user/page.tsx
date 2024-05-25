@@ -1,6 +1,7 @@
 'use client'
 import DataTable from "@/app/_components/data-table";
 import PageTitle from "@/app/_components/page-title";
+import { useUser } from "@/app/contexts/user-context";
 import { Payment } from "@/app/types";
 import { ColumnDef } from "@tanstack/react-table";
 
@@ -8,19 +9,23 @@ import { ColumnDef } from "@tanstack/react-table";
 const UsersPage = () => {
     const dataExemple: Payment[]  =[
         {
+          props:{
             lasOrder:"order-1",
             email:"marcelo@gmail.com",
             method:"post",
             name:"Marcelo"
+          }
         },
         {
+          props:{
             lasOrder:"order-2",
             email:"marcelo2@gmail.com",
             method:"post",
             name:"Marcelo"
+          }
         },
     ]
-     const columns: ColumnDef<Payment>[] = [
+    const columns: ColumnDef<Payment>[] = [
         {
           accessorKey: "name",
           header:"Name",
@@ -46,13 +51,19 @@ const UsersPage = () => {
             accessorKey:"method",
             header:"Method",
         },
-      ]
+    ]
+    const {isLoading,user} = useUser()
+    if(isLoading) {
+      return (
+        <p>Loadding..</p>
+      )
+    }
     return ( 
         <div className="flex flex-col gap-5 w-full">
         <PageTitle title="Users"/>
-        <DataTable columns={columns} data={dataExemple} />
+        <DataTable  />
         </div>
-     );
+    );
 }
  
 export default UsersPage;

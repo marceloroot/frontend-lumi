@@ -1,8 +1,8 @@
 import { DashBoardDTO } from "@/app/_interface/inovice-dashboard-interface"
 import { baseUrl } from "@/config/base";
 
-const GET = async (): Promise<DashBoardDTO> => {
-  const url = `${baseUrl}/api/invoice`;
+const GET = async (filterUser:string): Promise<DashBoardDTO> => {
+  const url = `${baseUrl}/api/invoice/${filterUser}`;
   const response = await fetch(url, {
     method: "GET",
     headers: {

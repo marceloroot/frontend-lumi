@@ -48,6 +48,8 @@ export interface EnergyDetails  {
     instaltionNumber:string;
     energyRecent:string;
     priceRecent:string;
+    totalEnergy:number;
+    totalPrice:number; 
    };
    export interface MonetaryValues  {
     name:string;
