@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 import { useUser } from "@/app/contexts/user-context";
 import { EditIcon, Receipt } from "lucide-react";
 import Link from "next/link";
+import { UserTestIdEnum } from "@/__test__/users-enum/userEnum";
 
 const DataTable = () => {
   const { isLoading, user } = useUser();
@@ -22,7 +23,7 @@ const DataTable = () => {
   return (
     <>
       <div className="rounded-md border">
-        <Table>
+        <Table data-testid={UserTestIdEnum.LINK_USER_ENUM}>
           <TableCaption>A list of your recent Users.</TableCaption>
           <TableHeader>
             <TableRow>
